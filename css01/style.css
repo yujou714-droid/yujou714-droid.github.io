@@ -1,0 +1,222 @@
+body {
+  margin: 0;
+  background-color: lightgray;
+}
+
+.game-container {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+}
+
+.game-screen {
+  width: 100%;
+  height: 100%;
+
+  /* 【素材替換區】背景圖片路徑 */
+  background-image: url("../img/101_01.jpg");
+
+  /* 【尺寸調整】讓背景圖片填滿遊戲畫面寬度 */
+  background-size: 100% auto;
+
+  /* 【位置調整】從圖片底部開始顯示 */
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  /*角色定位參考*/
+  position: relative;
+}
+.player {
+  /* 【角色尺寸調整】 */
+  width: 180px;
+  height: 420px;
+
+  /* 【角色素材】預設待機圖片 */
+  background-image: url("../img/he_default.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+
+  /* 角色定位：以下保留原本設定 */
+  position: absolute;
+  left: 50%;
+  bottom: 0px;
+  transform: translateX(-50%);
+}
+/* 開場跳跳動畫 */
+.player.intro-playing {
+  /* 背景動畫播放期間，先隱藏跳跳角色 */
+
+  width: 650px;
+  height: 420px;
+
+  background-image: url("../img/he_jumpjump.gif");
+  background-size: 750px auto;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  z-index: 1001;
+}
+.player.intro-hidden,
+.player.intro-playing.intro-hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+/* 金幣計數器 */
+.coin-counter {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+
+  padding: 12px 20px;
+
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+
+  border-radius: 12px;
+
+  font-size: 20px;
+  font-weight: bold;
+
+  z-index: 10;
+}
+/* 金幣素材 */
+.coin {
+  width: 36px;
+  height: 36px;
+
+  position: absolute;
+
+  background-image: url("../img/coin.gif");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  transform: translateX(-50%);
+}
+/* 金幣世界圖層 */
+.coin-layer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  pointer-events: none;
+
+  /* 【101 建築遮罩】 */
+  mask-image: url("../img/101_transparent.png");
+  mask-mode: alpha;
+
+  mask-size: 100% 100%;
+  mask-position: center bottom;
+  mask-repeat: no-repeat;
+}
+/* 結尾頁面 */
+.ending-screen {
+  position: fixed;
+  inset: 0;
+  background-color: black;
+  z-index: 999;
+  display: none;
+}
+
+.ending-screen.active {
+  display: block;
+}
+/* =========================
+   遊戲封面
+========================= */
+
+.cover-screen {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.cover-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 開始按鈕 */
+.start-button {
+  position: absolute;
+  right: 6%;
+  bottom: 7%;
+
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.start-button img {
+  display: block;
+  width: 480px;
+  height: auto;
+}
+/* 滑鼠移上去時稍微放大 */
+.start-button:hover img {
+  transform: scale(1.08);
+}
+
+/* 按下按鈕時 */
+.start-button:active {
+  transform: scale(0.95);
+}
+
+/* 隱藏封面 */
+.cover-screen.hidden {
+  display: none;
+}
+/* 飛機事件圖層 */
+.plane-layer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* 飛機 GIF */
+.plane-event {
+  position: absolute;
+  width: 1700px;
+  height: auto;
+  left: -250px;
+  pointer-events: none;
+}
+/* 101 開場動畫 */
+.background-slide {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 1000;
+  pointer-events: none;
+}
+/* 開始提示 GIF */
+.start-caption {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: auto;
+  z-index: 2000;
+  pointer-events: none;
+}
+/* 開窗戶 GIF */
+.window-event {
+  position: absolute;
+  height: auto;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 6;
+}
